@@ -1,0 +1,17 @@
+{
+    "name": "VelNet Dissonance Integration",
+    "rootNamespace": "VelNet.Dissonance",
+    "references": [
+        "GUID:61106e8dfb7a4e64a96af0eccfe1209f",
+        "GUID:1e55e2c4387020247a1ae212bbcbd381"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,22 @@
+{
+  "name": "edu.uga.engr.vel.velnet.dissonance",
+  "displayName": "VelNet Dissonance Integration",
+  "version": "1.0.0",
+  "unity": "2019.1",
+  "description": "Dissonance compatibility for VelNet",
+  "keywords": [
+    "networking",
+    "self-hosted",
+    "voice",
+    "dissonance"
+  ],
+  "author": {
+    "name": "Virtual Experiences Laboratory",
+    "email": "kjohnsen@uga.edu",
+    "url": "https://vel.engr.uga.edu"
+  },
+  "samples": [],
+  "dependencies": {
+    "edu.uga.engr.vel.velnet": "1.0.4"
+  }
+}
