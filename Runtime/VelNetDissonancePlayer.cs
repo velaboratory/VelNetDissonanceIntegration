@@ -82,7 +82,7 @@ namespace VelNet.Dissonance
 
 				//we also need to know when other players join, so we can send the dissonance ID again
 
-				VelNetManager.instance.OnPlayerJoined += (player) =>
+				VelNetManager.OnPlayerJoined += _ =>
 				{
 					using MemoryStream mem = new MemoryStream();
 					using BinaryWriter writer = new BinaryWriter(mem);
