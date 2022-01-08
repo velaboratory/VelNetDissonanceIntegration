@@ -96,7 +96,7 @@ namespace VelNet.Dissonance
 		private void SendVoiceData(ArraySegment<byte> data)
 		{
 			// need to send it
-			if (!IsMine) return;
+			if (!IsMine || !isSpeaking) return;
 
 			using MemoryStream mem = new MemoryStream();
 			using BinaryWriter writer = new BinaryWriter(mem);
