@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 82079769357423168}
   - component: {fileID: 114231507455867820}
   m_Layer: 0
-  m_Name: SpatializedPlaybackPrefab
+  m_Name: VelSpatialPlayback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
