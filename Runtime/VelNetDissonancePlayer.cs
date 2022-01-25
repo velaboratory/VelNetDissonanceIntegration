@@ -14,6 +14,7 @@ namespace VelNet.Dissonance
 	public class VelNetDissonancePlayer : NetworkComponent, IDissonancePlayer
 	{
 		private VelCommsNetwork comms;
+		public bool useTcp;
 		private bool isSpeaking;
 		private uint lastAudioId;
 
@@ -103,9 +104,9 @@ namespace VelNet.Dissonance
 			writer.Write((byte)MessageType.AudioData);
 			writer.Write(lastAudioId++);
 			writer.Write(data.ToArray());
-			// send voice data unreliably
-			// SendBytes(mem.ToArray(), false);
-			SendBytesToGroup("voice", mem.ToArray());
+			
+			// send voice data reliably/unreliably
+			SendBytesToGroup("voice", mem.ToArray(), useTcp);
 		}
 
 		/// <summary>
@@ -131,7 +132,10 @@ namespace VelNet.Dissonance
 
 		private void OnDestroy()
 		{
-			comms.SetPlayerLeft(dissonanceID);
+			if (comms != null)
+			{
+				comms.SetPlayerLeft(dissonanceID);	
+			}
 		}
 
 
