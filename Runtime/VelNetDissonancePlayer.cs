@@ -104,7 +104,7 @@ namespace VelNet.Dissonance
 			writer.Write((byte)MessageType.AudioData);
 			writer.Write(lastAudioId++);
 			writer.Write(data.ToArray());
-			
+
 			// send voice data reliably/unreliably
 			SendBytesToGroup("voice", mem.ToArray(), useTcp);
 		}
@@ -134,7 +134,7 @@ namespace VelNet.Dissonance
 		{
 			if (comms != null)
 			{
-				comms.SetPlayerLeft(dissonanceID);	
+				comms.SetPlayerLeft(dissonanceID);
 			}
 		}
 
@@ -147,28 +147,14 @@ namespace VelNet.Dissonance
 			// handle nearness cutoff
 			if (maxDistance > 0)
 			{
-				bool closePlayerListChanged = false;
-				foreach (VelNetDissonancePlayer p in allPlayers)
-				{
-					if (p == this)
-					{
-						continue;
-					}
+				int lastLength = closePlayers.Count;
+				
+				closePlayers = allPlayers
+					.Where(p => p != this)
+					.Where(p => Vector3.Distance(p.transform.position, transform.position) < maxDistance)
+					.Select(p => p.Owner.userid).ToList();
 
-					float dist = Vector3.Distance(p.transform.position, transform.position);
-					if (dist < maxDistance && !closePlayers.Contains(p.Owner.userid))
-					{
-						closePlayers.Add(p.Owner.userid);
-						closePlayerListChanged = true;
-					}
-					else if (dist >= maxDistance && closePlayers.Contains(p.Owner.userid))
-					{
-						closePlayers.Remove(p.Owner.userid);
-						closePlayerListChanged = true;
-					}
-				}
-
-				if (closePlayerListChanged)
+				if (closePlayers.Count != lastLength)
 				{
 					VelNetManager.SetupMessageGroup("voice", closePlayers);
 				}
